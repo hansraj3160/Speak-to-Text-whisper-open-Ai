@@ -96,8 +96,7 @@ class _SpeakToTextPageState extends State<SpeakToTextPage> {
       _isLoading=true;
     });
     String _apiKey =
-        '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';
-    final request =
+        '';    final request =
         http.MultipartRequest(
             'POST',
             Uri.parse('https://api.openai.com/v1/audio/transcriptions'),
@@ -125,6 +124,13 @@ class _SpeakToTextPageState extends State<SpeakToTextPage> {
           }
    
   }
+  @override
+void dispose() {
+  _recorder?.closeRecorder();
+  _recorder = null;
+  super.dispose();
+}
+
 
   @override
   Widget build(BuildContext context) {
